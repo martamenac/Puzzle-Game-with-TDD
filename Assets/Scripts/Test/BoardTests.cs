@@ -4,17 +4,12 @@ namespace Test
 {
     public class BoardTests
     {
-        [Test]
-        public void WhenCreateBoardWithHighAndHeight_ThenCreateAMapWithTheCorrectRowsAndColumns()
+        [TestCase (5,2)]
+        [TestCase (3,3)]
+        public void WhenCreateBoardWithHighAndHeight_ThenCreateAMapWithTheCorrectRowsAndColumns(int width, int height)
         {
-            //Arrange
-            var width = 5;
-            var height = 2;
-
-            //Act
             var board = new Board(width, height);
 
-            //Assert
             Assert.AreEqual(width, board.NumberOfColumns, 
                 $"Number of columns {board.NumberOfColumns} is different than width {width}");
             Assert.AreEqual(height, board.NumberOfRows, 

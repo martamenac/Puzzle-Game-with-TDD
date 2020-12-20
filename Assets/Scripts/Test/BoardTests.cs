@@ -1,12 +1,12 @@
-﻿using NUnit.Framework;
+﻿using System;
+using NUnit.Framework;
 
 namespace Test
 {
     public class BoardTests
     {
-        [TestCase (5,2)]
         [TestCase (3,3)]
-        public void WhenCreateBoardWithHighAndHeight_ThenCreateAMapWithTheCorrectRowsAndColumns(int width, int height)
+        public void WhenCreateBoardWithWidthAndHeight_ThenCreateAMapWithTheCorrectRowsAndColumns(int width, int height)
         {
             var board = new Board(width, height);
 
@@ -14,6 +14,17 @@ namespace Test
                 $"Number of columns {board.NumberOfColumns} is different than width {width}");
             Assert.AreEqual(height, board.NumberOfRows, 
                 $"Number of rows {board.NumberOfRows} is different than height {height}");
+        }
+
+        [TestCase(0,1)]
+        [TestCase(1,0)]
+        [TestCase(0,0)]
+        public void WhenCreateBoardWithWidthOrHeightZero_ThenThrowAnException(int width, int height)
+        {
+            Assert.Catch<Exception>(() =>
+            {
+                var board = new Board(width, height);
+            }, $"The board does not throw an exception when created with {width} width and {height} height");
         }
 
         [Test]

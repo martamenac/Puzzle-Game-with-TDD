@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 public class Board
 {
@@ -6,10 +7,15 @@ public class Board
     private const int ROWS_DIMENSION = 1;
     
     private readonly int[,] _cells;
-    private List<Square> _squares = new List<Square>();
+    private List<Cell> _squares = new List<Cell>();
 
     public Board(int width, int height)
     {
+        if (width <= 0 || height <= 0)
+        {
+            throw new Exception();
+        }
+
         _cells = new int[width, height];
     }
 
@@ -30,7 +36,7 @@ public class Board
         {
             for (int j = 0; j < height; j++)
             {
-                _squares.Add(new Square(i, j));
+                _squares.Add(new Cell(i, j));
             }
         }
     }

@@ -27,15 +27,5 @@ namespace Test
             }, $"The board does not throw an exception when created with {width} width and {height} height");
         }
 
-        [Test]
-        public void WhenBoardFilled_AllCellsHaveSquares()
-        {
-            var board = new Board(5, 5);
-
-            board.FillBoard();
-
-            Assert.AreEqual(25, board.RemainingSquares, 
-                $"Number of squares {board.RemainingSquares} is different than number of cells {board.NumberOfColumns * board.NumberOfRows}");
-        }
     }
 }

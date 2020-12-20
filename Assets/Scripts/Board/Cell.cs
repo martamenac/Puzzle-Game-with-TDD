@@ -4,12 +4,9 @@ using UnityEngine;
 
 public class Cell
 {
-    public readonly int XPosition;
-    public readonly int YPosition;
+    public string color;
 
-    public Cell(int xPos, int yPos)
+    public Cell()
     {
-        XPosition = xPos;
-        YPosition = yPos;
     }
 }
